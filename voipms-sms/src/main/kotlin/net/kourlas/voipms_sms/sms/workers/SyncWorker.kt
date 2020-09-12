@@ -108,7 +108,7 @@ class SyncWorker(applicationContext: Context,
      */
     private suspend fun showOrUpdateNotification(progress: Int = 0) {
         val notification = Notifications.getInstance(
-            CustomApplication.getInstance()).getSyncNotification(id, progress)
+            CustomApplication.instance).getSyncNotification(id, progress)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             setForeground(ForegroundInfo(
                 Notifications.SYNC_NOTIFICATION_ID, notification,
@@ -286,7 +286,7 @@ class SyncWorker(applicationContext: Context,
         // Show notifications for new messages
         if (newConversationIds.isNotEmpty()) {
             Notifications.getInstance(
-                CustomApplication.getInstance()).showNotifications(
+                CustomApplication.instance).showNotifications(
                 newConversationIds)
         }
     }
